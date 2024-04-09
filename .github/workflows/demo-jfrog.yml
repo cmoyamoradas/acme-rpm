@@ -26,6 +26,9 @@ jobs:
     steps:
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
-        run: jf --version
         env:
           JF_ENV_1: ${{ secrets.JF_SECRET_ENV_1 }}
+      - run: |
+             # Ping the server
+             jf rt ping
+        
