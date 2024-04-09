@@ -22,7 +22,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Setup JFrog CLI
@@ -33,10 +33,10 @@ jobs:
         run: |
           # Ping the server
           jf rt ping
-      - name: Installing cURL
+      - name: Checking cURL
         run: |
-          # Installing curl due to some problems with the Ubunto version
-          apt install curl
+          # checking curl version
+          curl --version
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
