@@ -36,7 +36,7 @@ jobs:
       - name: Installing cURL
         run: |
           # Installing curl due to some problems with the Ubunto version
-          sudo apt install curl
+          apt install curl
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
