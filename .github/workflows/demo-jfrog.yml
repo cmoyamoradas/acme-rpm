@@ -37,6 +37,5 @@ jobs:
           # Download from JFrog Releases
           curl \
           -o \
-          -X GET \
           <DOWNLOAD_URL>/<FILE>
         
