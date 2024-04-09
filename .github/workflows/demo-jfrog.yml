@@ -13,7 +13,8 @@ on:
 env:
   GENERIC_REPOSITORY: 'carlosmm-generic-local'
   DOWNLOAD_URL: 'https://releases.jfrog.io/artifactory'
-  FILE: 'artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.77.8.rpm'
+  PATH: 'artifactory-pro-rpms/jfrog-artifactory-pro'
+  FILE: 'jfrog-artifactory-pro-7.77.8.rpm'
   ARTIFACTORY_URL: 'soleng.jfrog.io'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -38,5 +39,16 @@ jobs:
           curl \
           -L \
           -O \
-          ${{ env.DOWNLOAD_URL }}/${{ env.FILE }}
-        
+          ${{ env.DOWNLOAD_URL }}/${{ env.PATH }}/${{ env.FILE }}
+      - name: Upload RPM package with checksum 
+        run: |
+          # Upload by checksum
+          curl \
+          -X PUT
+          -H 'X-Checksum-Deploy: true' \
+          -H 'X-Checksum-Sha1: sha1Value' \
+          -H 'X-Checksum-Sha256: sha256Value' \
+          -H 'X-Checksum: checksum value' \
+          -H 'Authorization: Bearer ${{ secrets.JF_SOLENG_TOKEN }}' \
+          https://${{ env.ARTIFACTORY_URL }}/artifactory/${{ env.GENERIC_REPOSITORY }}/${{ env.FILE }}
+          -T ${{ env.FILE }}
