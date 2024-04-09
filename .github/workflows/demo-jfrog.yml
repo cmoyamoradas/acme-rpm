@@ -33,6 +33,9 @@ jobs:
         run: |
           # Ping the server
           jf rt ping
+      - name: Check cURL
+        run: |
+          curl --version
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
