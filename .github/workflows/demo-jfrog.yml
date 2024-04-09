@@ -33,9 +33,10 @@ jobs:
         run: |
           # Ping the server
           jf rt ping
-      - name: Check cURL
+      - name: Installing cURL
         run: |
-          curl --version
+          # Installing curl due to some problems with the Ubunto version
+          sudo apt install curl
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
