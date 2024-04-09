@@ -28,9 +28,10 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v3
         env:
           JF_ENV_1: ${{ secrets.JF_SECRET_ENV_1 }}
+      - name: Ping server
         run: |
-             # Ping the server
-             jf rt ping
+          # Ping the server
+          jf rt ping
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
