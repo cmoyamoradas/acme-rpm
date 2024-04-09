@@ -36,6 +36,7 @@ jobs:
         run: |
           # Download from JFrog Releases
           curl \
-          -o \
-          <DOWNLOAD_URL>/<FILE>
+          -L \
+          -O \
+          ${{ env.DOWNLOAD_URL }}/${{ env.FILE }}
         
