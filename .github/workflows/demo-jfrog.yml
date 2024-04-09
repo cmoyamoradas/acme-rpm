@@ -12,8 +12,8 @@ on:
 
 env:
   GENERIC_REPOSITORY: 'carlosmm-generic-local'
-  DOWNLOAD_URL: 'https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/'
-  RELEASE: 'jfrog-artifactory-pro-7.77.8.rpm'
+  DOWNLOAD_URL: 'https://releases.jfrog.io/artifactory'
+  FILE: 'artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-7.77.8.rpm'
   ARTIFACTORY_URL: 'soleng.jfrog.io'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -28,7 +28,14 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v3
         env:
           JF_ENV_1: ${{ secrets.JF_SECRET_ENV_1 }}
-      - run: |
+        run: |
              # Ping the server
              jf rt ping
+      - name: Download RPM package
+        run: |
+          # Download from JFrog Releases
+          curl \
+          -o \
+          -X GET \
+          <DOWNLOAD_URL>/<FILE>
         
