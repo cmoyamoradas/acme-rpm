@@ -38,10 +38,7 @@ jobs:
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
-          curl \
-          -L \
-          -O \
-          ${{ env.DOWNLOAD_URL }}/${{ env.PATH }}/${{ env.FILE }}
+          jf rt dl ${{ env.PATH }}/${{ env.FILE }}
       - name: Upload RPM package with checksum 
         run: |
           # Upload by checksum
