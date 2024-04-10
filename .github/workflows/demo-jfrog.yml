@@ -13,7 +13,7 @@ on:
 env:
   GENERIC_REPOSITORY: 'carlosmm-generic-local'
   DOWNLOAD_URL: 'https://releases.jfrog.io/artifactory'
-  PATH: 'artifactory-pro-rpms/jfrog-artifactory-pro'
+  FILE_PATH: 'artifactory-pro-rpms/jfrog-artifactory-pro'
   FILE: 'jfrog-artifactory-pro-7.77.8.rpm'
   ARTIFACTORY_URL: 'soleng.jfrog.io'
 
@@ -33,11 +33,11 @@ jobs:
         run: |
           # Ping the server
           jf rt ping
-      - run: curl -O ${{ env.DOWNLOAD_URL }}/${{ env.PATH }}/${{ env.FILE }}
+      - run: curl -O ${{ env.DOWNLOAD_URL }}/${{ env.FILE_PATH }}/${{ env.FILE }}
       - name: Download RPM package
         run: |
           # Download from JFrog Releases
-          jf rt dl ${{ env.PATH }}/${{ env.FILE }}
+          jf rt dl ${{ env.FILE_PATH }}/${{ env.FILE }}
       - name: Upload RPM package with checksum 
         run: |
           # Upload by checksum
