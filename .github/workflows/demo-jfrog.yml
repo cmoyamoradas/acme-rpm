@@ -12,14 +12,9 @@ on:
 
 env:
   GENERIC_REPOSITORY: 'carlosmm-generic-local'
-  #DOWNLOAD_URL: 'https://releases.jfrog.io/artifactory'
   DOWNLOAD_URL: 'https://packages.confluent.io'
-  #FILE_PATH: 'artifactory-pro-rpms/jfrog-artifactory-pro'
   FILE_PATH: 'rpm/7.3'
-  #FILE: 'jfrog-artifactory-pro-6.23.13.rpm'
   FILE: 'confluent-kafka-7.3.6-1.noarch.rpm'
-  ARTIFACTORY_URL: 'soleng.jfrog.io'
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
